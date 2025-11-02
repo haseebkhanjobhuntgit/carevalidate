@@ -1,0 +1,26 @@
+{
+  "name": "carevalidate",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.1.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "graphql": "^16.12.0",
+    "nuxt": "^3.20.0",
+    "nuxt-graphql-server": "^3.1.6",
+    "vue": "^3.5.22",
+    "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.5"
+  }
+}
