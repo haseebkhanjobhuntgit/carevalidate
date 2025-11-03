@@ -1,0 +1,87 @@
+:root {
+  --bg: #ffffff;
+  --text: #111430;
+  --accent: #3DAAAB;
+  --card: #f5f6f8;
+  --muted: #e6e8ee;
+  --radius: 12px;
+}
+
+.dark {
+  --bg: #111430;
+  --text: #ffffff;
+  --accent: #3DAAAB;
+  --card: #1a1d3a;
+  --muted: #2a2e55;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Parkinsans", Inter, serif;
+  transition: background .25s ease, color .25s ease;
+}
+
+.cv-banner {
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  color: var(--text);
+  border-radius: var(--radius);
+}
+
+.cv-banner__inner {
+  width: 100%;
+  max-width: 920px;
+}
+
+.cv-banner__title {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  margin: 0 0 8px 0;
+}
+
+.cv-banner__subtitle {
+  font-size: 1rem;   
+  opacity: 0.85;
+  margin: 0 0 16px 0;
+}
+
+.cv-banner__actions {
+  display: inline-flex;
+  gap: 12px;
+}
+
+.taglist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.tag-pill {
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--text);
+  border-radius: 9999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.875rem;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.tag-pill.active, .tag-pill:hover {
+  background: var(--accent);
+  color: var(--card);
+  border-color: var(--accent);
+}
+
+@media (min-width: 768px) {
+  .cv-banner { padding: 48px; }
+  .cv-banner__title { font-size: 2.25rem; } 
+  .cv-banner__subtitle { font-size: 1.125rem; }
+}
