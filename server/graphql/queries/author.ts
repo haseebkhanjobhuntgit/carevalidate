@@ -1,4 +1,6 @@
-import prisma from "@/prisma/client";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export const authors = async (): Promise<any> => {
   return prisma.author.findMany({ include: { posts: true } });
