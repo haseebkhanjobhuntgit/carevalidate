@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   apollo: {
     clients: {
       default: {
-        httpEndpoint: 'http://localhost:3000/api/graphql'
+        httpEndpoint: 'https://carevalidate.vercel.app/api/graphql'
       }
     },
   },
