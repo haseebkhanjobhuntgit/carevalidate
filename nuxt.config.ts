@@ -10,6 +10,13 @@ export default defineNuxtConfig({
     '@nuxtjs/apollo',
     '@nuxt/image'
   ],
+  vite: {
+    resolve: {
+      alias: {
+        '.prisma/client/index-browser': './node_modules/.prisma/client/index-browser.js',
+      },
+    },
+  },
   graphqlServer: {
     url: '/api/graphql'
   },
