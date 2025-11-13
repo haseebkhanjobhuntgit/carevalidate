@@ -3,6 +3,7 @@ import prisma from "@/prisma/client";
 type PostFilter = {
   search?: string;
   published?: boolean;
+  featured?: boolean;
   authorEmail?: string;
   categorySlugs?: string[];
   tagSlugs?: string[];
@@ -24,6 +25,7 @@ export const posts = async (
     });
   }
   if (typeof f?.published === "boolean") AND.push({ published: f.published });
+  if(typeof f?.featured == "boolean") AND.push({ featured: f.featured });
   if (f?.authorEmail) AND.push({ author: { email: f.authorEmail } });
   if (f?.categorySlugs?.length) AND.push({ categories: { some: { slug: { in: f.categorySlugs } } } });
   if (f?.tagSlugs?.length) AND.push({ tags: { some: { slug: { in: f.tagSlugs } } } });

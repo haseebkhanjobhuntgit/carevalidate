@@ -11,9 +11,7 @@ const GET_TAGS = gql`
     }
   }
 `
-
 const { data, pending, error } = await useAsyncQuery(GET_TAGS)
-console.log('@--> error', error.value);
 
 const tags = computed(() => data.value?.tags ?? [])
 
@@ -26,7 +24,7 @@ onMounted(() => {
 <template>
   <Banner
     title="Welcome, to the CareValidate blog"
-    subtitle="HIPAA-grade workflows without the bloat."
+    subtitle="Your AI-Powered, Digital Health Business Partner."
     cta-label="Book a demo"
     cta-href="/contact"
   />

@@ -28,6 +28,7 @@ html, body {
   align-items: center;
   justify-content: center;
   padding: 24px;
+  padding-bottom: 0;
   text-align: center;
   color: var(--text);
   border-radius: var(--radius);
@@ -81,7 +82,7 @@ html, body {
 }
 
 @media (min-width: 768px) {
-  .cv-banner { padding: 48px; }
+  .cv-banner { padding: 48px; padding-bottom: 0; }
   .cv-banner__title { font-size: 2.25rem; } 
   .cv-banner__subtitle { font-size: 1.125rem; }
 }
