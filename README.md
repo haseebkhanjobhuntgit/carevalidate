@@ -1,75 +1,33 @@
-# Nuxt Minimal Starter
+# CareValidate Blog Project
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A simple blog platform built with Nuxt 3, GraphQL, Prisma, and SQLite for the CareValidate technical assessment.
+
+## Tech Used
+- Nuxt 3
+- Apollo Server (GraphQL)
+- Prisma ORM
+- SQLite
+- TypeScript
+
+## Features
+- GraphQL API for posts, authors, categories, and tags
+- Prisma models and seed script
+- Nuxt frontend with filtering, pagination, and dynamic routes
+- Local and Vercel deployment setup
 
 ## Setup
 
-Make sure to install dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
+### Install
 yarn install
 
-# bun
-bun install
-```
+### Run Prisma Migration
+npx prisma migrate dev
 
-## Development Server
+### Seed the Database
+npx prisma db seed
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
+### Start Dev Server
 yarn dev
 
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## GraphQL Endpoint
+/api/graphql
