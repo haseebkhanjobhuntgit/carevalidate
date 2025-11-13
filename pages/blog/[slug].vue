@@ -46,6 +46,11 @@ const { data, pending, error } = await useAsyncQuery(GET_POST, { slug });
 
 const post = computed(() => data.value?.post ?? null);
 
+
+useSeoMeta({
+    title: post?.value?.title
+});
+
 const GET_RELATED_POSTS = gql`
   query RelatedPosts(
     $categorySlugs: [String!]
