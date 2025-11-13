@@ -6,7 +6,8 @@ type Post {
   published: Boolean!
   featured: Boolean!
   createdAt: String!
-  updatedAt: String! 
+  updatedAt: String!
+  coverImageUrl: String!
   
   author: Author!
   categories: [Category!]!
@@ -39,9 +40,11 @@ input PostFilter {
   search: String
   published: Boolean
   featured: Boolean
+  limit: Int
   authorEmail: String
   categorySlugs: [String!]
   tagSlugs: [String!]
+  offset: Int
 }
 
 type Query {

@@ -6,7 +6,9 @@ type PostFilter = {
   featured?: boolean;
   authorEmail?: string;
   categorySlugs?: string[];
+  limit?: number;
   tagSlugs?: string[];
+  offset?: number;
 };
 
 export const posts = async (
@@ -16,14 +18,18 @@ export const posts = async (
   const f = args.filter;
   const AND: any[] = [];
 
+
   if (f?.search?.trim()) {
+    const search = f.search.trim();
+
     AND.push({
       OR: [
-        { title:   { contains: f.search, mode: "insensitive" } },
-        { content: { contains: f.search, mode: "insensitive" } },
+        { title:   { contains: search } },
+        { content: { contains: search } },
       ],
     });
   }
+
   if (typeof f?.published === "boolean") AND.push({ published: f.published });
   if(typeof f?.featured == "boolean") AND.push({ featured: f.featured });
   if (f?.authorEmail) AND.push({ author: { email: f.authorEmail } });
@@ -34,11 +40,14 @@ export const posts = async (
 
   return prisma.post.findMany({
     where,
+    take: f?.limit ?? undefined,
+    skip: f?.offset ?? undefined,
     include: { author: true, categories: true, tags: true },
   });
 };
 
 export const post = async (_: unknown, args: { slug: string }): Promise<any> => {
+  console.log('@--> args', args);
   return prisma.post.findUnique({
     where: { slug: args.slug },
     include: { author: true, categories: true, tags: true },

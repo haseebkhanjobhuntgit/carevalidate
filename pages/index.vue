@@ -1,23 +1,44 @@
 <script setup lang="ts">
 import { gql } from '@apollo/client/core'
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 
 const GET_TAGS = gql`
   query Homepage {
-    tags {
+    categories {
       id
       name
       slug
     }
+    featuredPosts: posts(filter: {
+      featured: true, limit: 3
+    }) {
+      id
+      slug
+      title
+      content
+      coverImageUrl
+    }
+
+    recentPosts: posts(filter: {
+      featured: false
+      published: true
+      limit: 5
+    }) {
+      id
+      title
+      slug
+      content
+      coverImageUrl
+    }
+
   }
 `
 const { data, pending, error } = await useAsyncQuery(GET_TAGS)
 
-const tags = computed(() => data.value?.tags ?? [])
+const categories = computed(() => data.value?.categories ?? [])
 
-onMounted(() => {
-  console.log('@--> tags (client)', tags.value)
-})
+const featuredPosts = computed(() => data.value?.featuredPosts ?? []);
+
 </script>
 
 
@@ -32,8 +53,34 @@ onMounted(() => {
   <section style="margin-top:24px">
     <div v-if="pending">Loading tags…</div>
     <div v-else-if="error">Failed to load tags.</div>
-    <TagList v-else :tags="tags" />
+    <TagList v-else :tags="categories" />
   </section>
 
+  <PostGrid
+    v-if="featuredPosts.length"
+    title="Featured articles"
+    subtitle="Handpicked posts to get you started."
+    :posts="featuredPosts"
+    :excerpt-length="160"
+  >
+    <template #actions>
+      <NuxtLink to="/blog" class="post-grid-section__view-all">
+        View all posts →
+      </NuxtLink>
+    </template>
+  </PostGrid>
 
+  <PostGrid
+    v-if="featuredPosts.length"
+    title="Latest articles"
+    subtitle="The newest updates from the CareValidate team."
+    :posts="featuredPosts"
+    :excerpt-length="140"
+  >
+    <template #actions>
+      <NuxtLink to="/blog" class="post-grid-section__view-all">
+        View all posts →
+      </NuxtLink>
+    </template>
+  </PostGrid>
 </template>

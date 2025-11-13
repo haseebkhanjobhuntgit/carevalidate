@@ -11,9 +11,7 @@ config({ path: resolve(__dirname, "../.env") });
 
 
 const unsplash = (q: string) =>
-  `https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=MnwyMDk0Nzl8MHwxfHNlYXJjaHwxfHx${encodeURIComponent(
-    q
-  )}fGVufDB8fHx8`;
+  `https://source.unsplash.com/1600x900/?${encodeURIComponent(q)}`;
 
 const pravatar = (id: number) => `https://i.pravatar.cc/256?img=${id}`;
 
@@ -108,6 +106,7 @@ async function main() {
         "Set up Nuxt 3 with GraphQL (Apollo Server) and Prisma for a complete full-stack blog app.",
       authorId: bob.id,
       published: true,
+      featured: true,
       coverImageUrl: unsplash("nuxt 3"),
       categories: ["web-dev", "javascript"],
       tags: ["nuxt", "graphql", "typescript"],
@@ -119,6 +118,7 @@ async function main() {
         "Learn how to design complex data models and relationships using Prisma's schema language.",
       authorId: bob.id,
       published: true,
+      featured: true,
       coverImageUrl: unsplash("prisma database"),
       categories: ["web-dev", "devops"],
       tags: ["prisma", "database", "typescript"],
@@ -130,6 +130,7 @@ async function main() {
         "Practical tips for accessible design systems that comply with WCAG standards.",
       authorId: alice.id,
       published: true,
+      featured: true,
       coverImageUrl: unsplash("accessible design"),
       categories: ["design", "web-dev"],
       tags: ["css", "design", "vue"],
