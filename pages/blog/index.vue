@@ -120,6 +120,7 @@ const prevPage = () => {
     page.value -= 1;
   }
 };
+
 </script>
 
 <template>

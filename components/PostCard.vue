@@ -2,11 +2,13 @@
   <article class="post-card">
     <NuxtLink :to="`/blog/${post.slug}`" class="post-card__link">
       <div v-if="post.coverImageUrl" class="post-card__image-wrapper">
-        <img
+        <NuxtImg
           :src="post.coverImageUrl"
           :alt="post.title"
+          width="640"
+          height="360"
+          format="webp"
           class="post-card__image"
-          loading="lazy"
         />
       </div>
 

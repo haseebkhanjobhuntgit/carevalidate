@@ -6,7 +6,8 @@ export default defineNuxtConfig({
     '@prisma/nuxt',
     '@nuxtjs/color-mode',
     '@nuxtjs/google-fonts',
-    '@nuxtjs/apollo'
+    '@nuxtjs/apollo',
+    '@nuxt/image'
   ],
   graphqlServer: {
     url: '/api/graphql'

@@ -46,19 +46,6 @@ const { data, pending, error } = await useAsyncQuery(GET_POST, { slug });
 
 const post = computed(() => data.value?.post ?? null);
 
-const formattedDate = computed(() => {
-  if (!post.value?.createdAt) return "";
-  return new Date(post.value.createdAt).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-});
-
-/**
- * Related posts query
- * We'll use categories + tags from the current post.
- */
 const GET_RELATED_POSTS = gql`
   query RelatedPosts(
     $categorySlugs: [String!]
@@ -199,12 +186,9 @@ const nativeShare = async () => {
         </h1>
 
         <div class="post-detail__meta">
-          <span v-if="post.author?.name" class="post-detail__meta-item">
+          <NuxtLink :to="`/blog/author/${post.author.email}`">
             By {{ post.author.name }}
-          </span>
-          <span v-if="formattedDate" class="post-detail__meta-item">
-            {{ formattedDate }}
-          </span>
+          </NuxtLink>
         </div>
 
         <div v-if="post.categories?.length" class="post-detail__chips">

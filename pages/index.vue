@@ -21,8 +21,7 @@ const GET_TAGS = gql`
 
     recentPosts: posts(filter: {
       featured: false
-      published: true
-      limit: 5
+      limit: 6
     }) {
       id
       title
@@ -38,6 +37,8 @@ const { data, pending, error } = await useAsyncQuery(GET_TAGS)
 const categories = computed(() => data.value?.categories ?? [])
 
 const featuredPosts = computed(() => data.value?.featuredPosts ?? []);
+
+const recentPosts = computed(() => data.value?.recentPosts ?? []);
 
 </script>
 
@@ -74,7 +75,7 @@ const featuredPosts = computed(() => data.value?.featuredPosts ?? []);
     v-if="featuredPosts.length"
     title="Latest articles"
     subtitle="The newest updates from the CareValidate team."
-    :posts="featuredPosts"
+    :posts="recentPosts"
     :excerpt-length="140"
   >
     <template #actions>

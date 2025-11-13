@@ -47,7 +47,6 @@ export const posts = async (
 };
 
 export const post = async (_: unknown, args: { slug: string }): Promise<any> => {
-  console.log('@--> args', args);
   return prisma.post.findUnique({
     where: { slug: args.slug },
     include: { author: true, categories: true, tags: true },
